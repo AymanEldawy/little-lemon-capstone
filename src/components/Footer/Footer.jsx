@@ -1,7 +1,9 @@
 import { createElement } from 'react';
-import { Logo, Heading, SocialMediaWidget } from '../../components';
 import { Link } from 'react-router-dom';
+
+import { Heading, Logo, SocialMediaWidget } from '../../components';
 import navigation from '../../settings/cms/navigation.json';
+
 import './Footer.css';
 
 export const Footer = () => {
@@ -13,12 +15,11 @@ export const Footer = () => {
         height="60px"
       />
 
-      <section className="LL-FooterMenu">
+      <div className="LL-FooterMenu">
         <Heading tag="h4" size="base">
           Menu
         </Heading>
-        <nav className="LL-Navigation LL-FooterNavigation">
-          <ul>
+          <ul className="LL-Navigation LL-FooterNavigation">
             {navigation.map(({ id, name, title, link, url, state }) => {
               const Element = link === 'internal' ? Link : 'a';
               const linkProps =
@@ -32,10 +33,9 @@ export const Footer = () => {
               );
             })}
           </ul>
-        </nav>
-      </section>
+      </div>
 
-      <section className="LL-FooterContact">
+      <div className="LL-FooterContact">
         <Heading tag="h4" size="base">
           Contact
         </Heading>
@@ -44,16 +44,16 @@ export const Footer = () => {
           <p>815-582-5830</p>
           <p>contact@littlelemon.com</p>
         </article>
-      </section>
+      </div>
 
-      <section className="LL-FooterSocial">
+      <div className="LL-FooterSocial">
         <Heading tag="h4" size="base">
           Social Media
         </Heading>
-        <nav className="LL-Navigation LL-FooterNavigation">
+        <ul className="LL-Navigation LL-FooterNavigation">
           <SocialMediaWidget />
-        </nav>
-      </section>
+        </ul>
+      </div>
     </footer>
   );
 };

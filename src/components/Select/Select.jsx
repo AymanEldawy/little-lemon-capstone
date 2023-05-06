@@ -1,6 +1,8 @@
-import { useState, useId, forwardRef } from 'react';
+import { forwardRef, useId, useState } from 'react';
+
+import { Error, Label } from '../../components';
 import { Option } from './components';
-import { Label, Error } from '../../components';
+
 import './Select.css';
 
 export const Select = forwardRef(
@@ -72,7 +74,7 @@ export const Select = forwardRef(
     };
 
     return (
-      <section className={`LL-SelectContainer ${className ?? ''}`}>
+      <div className={`LL-SelectContainer ${className ?? ''}`}>
         <Label
           id={label_id}
           className={`LL-SelectLabel ${error_id ? 'error' : ''}`}
@@ -109,7 +111,7 @@ export const Select = forwardRef(
             <Error id={error_id}>{errors}</Error>
           </section>
         )}
-      </section>
+      </div>
     );
   }
 );

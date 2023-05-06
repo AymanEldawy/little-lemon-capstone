@@ -1,14 +1,15 @@
-import { useCallback, useReducer, useEffect } from 'react';
+import { faArrowLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useCallback, useEffect, useReducer } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Main, Heading, ProgressBar, Button, Icon } from '../../components';
-import { faTimes, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import './BookingPage.css';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { BookingForm } from './components';
+
+import { bookingFormReducer, loadInitialState, STAGES } from '../../actions';
+import { Button, Heading, Icon, Main, ProgressBar } from '../../components';
 import { FormContextProvider } from '../../context';
 import { submitAPI } from '../../utilities';
+import { BookingForm } from './components';
 
-import { bookingFormReducer, STAGES, loadInitialState } from '../../actions';
+import './BookingPage.css';
 
 export const BookingPage = () => {
   const location = useLocation();
@@ -88,16 +89,16 @@ export const BookingPage = () => {
 
       <FormContextProvider value={{ state, dispatch }}>
         {STAGES.indexOf(state.stage) === 0 && (
-          <section className="LL-BookingPageContainer">
+          <div className="LL-BookingPageContainer">
             {/** Enter Content for Larger Screens */}
-            <section id="LL-BookingPageHero">
+            <div id="LL-BookingPageHero">
               <img
                 src="https://ik.imagekit.io/zenius/Coursera/html-css/little-lemon-restaurant_wsHVlbvkh.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1675153797856&tr=w-1080%2Ch-1350%2Cfo-auto"
                 alt="Little Lemon - Seating"
               />
-            </section>
+            </div>
             <BookingForm onSubmit={submitForm} />
-          </section>
+          </div>
         )}
         <Outlet
           context={{
